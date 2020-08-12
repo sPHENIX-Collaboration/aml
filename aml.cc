@@ -47,17 +47,15 @@
 #include <getopt.h>
 #endif
 
-#include "et.h"
+#include <Event/msg_control.h>
 
-#include <EventTagger.h>
-#include <BufferConstants.h>
-#include <A_Event.h>
+//#include <EventTagger.h>
+#include <Event/BufferConstants.h>
+#include <Event/A_Event.h>
 
-#include <ogzBuffer.h>
-#include <buffer.h>
+#include <Event/ogzBuffer.h>
+#include <Event/buffer.h>
 #include <et_control.h>
-
-#include <date_filter_msg_buffer.h>
 
 
 #define CTRL_BEGINRUN 1
@@ -145,23 +143,14 @@ struct thread_arg
 
 
 
-et_att_id	  attach1;
-et_sys_id       id;
-et_openconfig   openconfig;
-et_event       *pe;
-
-
-
 
 int readn(int , char *, int);
 int writen(int , char *, int);
 
 #if defined(SunOS) || defined(Linux) 
 void sig_handler(int);
-void et_control_handler(int);
 #else
 void sig_handler(...);
-void et_control_handler(...);
 #endif
 
 void cleanup(const int exitstatus);
@@ -478,7 +467,7 @@ void *writebuffers ( void * arg)
 
 		  else   // no write error
 		    {
-		      nd->add_md5 ( (char *) buffers[i].bf , bytes);
+		      //nd->add_md5 ( (char *) buffers[i].bf , bytes);
 		      NumberWritten++;
 		      // extract the number of events from the buffer header, unswapped first
 		      if ( buffers[i].bf[1] == LZO1XBUFFERMARKER 
@@ -580,8 +569,6 @@ int main( int argc, char* argv[])
 
 
 
-  signal(ET_CONTROL_SIGNAL, et_control_handler);
-  
 
   int filesequence_increment=1;
   int filesequence_start=1;
@@ -692,12 +679,13 @@ int main( int argc, char* argv[])
 
   if (argc <= optind+1) exitmsg();
 
-
   nd = new et_control (status, "aml" , token, 1, databaseflag );
   if (status) 
     {
       cleanup(1);
     }
+
+
   sscanf (argv[optind],"%d", &the_port);
 
   

@@ -42,10 +42,10 @@ et_event_generator -p port -n <number of buffers> et_name host_name filename
 #endif
 
 
-#include "oBuffer.h"
-#include "Event.h"
-#include "testEventiterator.h"
-#include "fileEventiterator.h"
+#include "Event/oBuffer.h"
+#include "Event/Event.h"
+#include "Event/testEventiterator.h"
+#include "Event/fileEventiterator.h"
 
 #define CTRL_BEGINRUN 1
 #define CTRL_ENDRUN   2
@@ -224,7 +224,7 @@ int main( int argc, char* argv[])
       // std::cout << "waiting for acknowledge...   " << std::endl ;
       readn (sockfd, (char *) &i, 4);
       status = ntohl(i);
-      std::cout << "AML ack: " << status  << std::endl;
+      //std::cout << "AML ack: " << status  << std::endl;
       if ( (status & 0xffff) == CTRL_REMOTEFAIL )
 	{
 	  std::cout << "AML reports failure at buffer " << j << ", ending..." << std::endl;

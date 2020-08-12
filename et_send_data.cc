@@ -42,10 +42,10 @@ et_event_generator -p port -n <number of buffers> et_name host_name filename
 #endif
 
 
-#include "oBuffer.h"
-#include "Event.h"
-#include "testEventiterator.h"
-#include "fileEventiterator.h"
+#include "Event/oBuffer.h"
+#include "Event/Event.h"
+#include "Event/testEventiterator.h"
+#include "Event/fileEventiterator.h"
 
 #define CTRL_BEGINRUN 1
 #define CTRL_ENDRUN   2

@@ -6,12 +6,12 @@
 #include <iostream>
 #include <iomanip>
 
-#include <phenixTypes.h>
-#include <oBuffer.h>
-#include <Event.h>
+#include <Event/phenixTypes.h>
+#include <Event/oBuffer.h>
+#include <Event/Event.h>
 
-#include <BufferConstants.h>
-#include <EventTypes.h>
+#include <Event/BufferConstants.h>
+#include <Event/EventTypes.h>
 
 #include <pthread.h>
 

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <sys/types.h>
 #include <unistd.h>
-#include <md5.h>
+#include <Event/md5.h>
 #include <et_structure.h>
 
 //#include "et_PGConnection.h"
