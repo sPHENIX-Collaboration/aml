@@ -19,8 +19,8 @@ lib_LTLIBRARIES = \
 bin_PROGRAMS = \
   aml  \
   et_send_data \
-  et_send_buffers 
-
+  et_send_buffers \
+  aml_display
 
 aml_SOURCES = \
   aml.cc \
@@ -32,6 +32,14 @@ aml_LDADD = \
   -lNoRootEvent \
   $(databaselibs) -lz \
   -lrt
+
+
+aml_display_SOURCES = \
+  aml_display.cc
+
+aml_display_LDADD = \
+  libloggerUtils.la 
+
 
 
 aml_LDFLAGS = $(ADDLDFLAGS)
